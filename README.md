@@ -35,11 +35,6 @@ ADOLab/
 ### Execução
 Configure a connection string SqlServerConnection no appsettings.json do projeto que será executado.
 
-Build
-dotnet build ADOLab.sln
-
-Console
-dotnet run --project ADOLab.Console/ADOLab.Console.csproj
-
-Web
-dotnet run --project ADOLab.Web/ADOLab.Web.csproj
+- Build: `dotnet build ADOLab.sln`
+- Console: `dotnet run --project ADOLab.Console/ADOLab.Console.csproj`
+- Web: `dotnet run --project ADOLab.Web/ADOLab.Web.csproj`
