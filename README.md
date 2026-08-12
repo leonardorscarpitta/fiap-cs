@@ -14,11 +14,15 @@ Atualizar alunos;
 Excluir alunos;
 Buscar alunos por propriedade e valor.
 Estrutura
+
+```
 ADOLab/
 ├── ADOLab/              # Domínio e repository
 ├── ADOLab.Console/      # Aplicação Console
 ├── ADOLab.Web/          # Aplicação Web MVC
 └── ADOLab.sln           # Solution
+```
+
 Tecnologias
 .NET 8
 ASP.NET Core MVC (.NET 10)
