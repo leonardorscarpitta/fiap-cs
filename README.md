@@ -1,3 +1,5 @@
+> Projeto academico
+
 ADOLab
 
 Projeto de estudo sobre acesso a dados utilizando ADO.NET, com uma biblioteca de domínio, uma aplicação Console e uma aplicação Web MVC.
