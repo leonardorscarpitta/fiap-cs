@@ -1,40 +1,44 @@
-> Projeto academico
+# Domino Ponta de Quina
 
-### ADOLab
+## Projetos
 
-Projeto de estudo sobre acesso a dados utilizando ADO.NET, com uma biblioteca de domínio, uma aplicação Console e uma aplicação Web MVC.
+- `DominoPontaDeQuina.Core`: regras e fluxo do jogo.
+- `DominoPontaDeQuina.Domain`: entidades e enums persistentes.
+- `DominoPontaDeQuina.Repository`: `DominoDbContext`, mapeamentos Fluent API e repositorios EF Core.
+- `DominoPontaDeQuina.Migrations`: aplicacao console usada como startup project para migrations.
+- `DominoPontaDeQuina.Tests`: testes automatizados do nucleo do jogo.
 
-### Desafio
+## Modelo persistente
 
-Implementar o CRUD da classe AlunoRepository, permitindo:
+`Usuario` representa a conta do aplicativo cliente e pode possuir varios `Jogador`, que sao perfis de jogo.
+`Partida` representa uma partida armazenada para consulta de historico. `ParticipacaoPartida` liga um jogador a uma partida e registra sua posicao, pontuacao e resultado.
 
-- Inserir alunos;
-- Listar alunos;
-- Atualizar alunos;
-- Excluir alunos;
-- Buscar alunos por propriedade e valor.
+Esta etapa prepara a persistencia e o futuro fluxo de autenticacao. API, endpoints, autenticacao e JWT estao fora do escopo.
 
+## Pre-requisitos
 
-### Estrutura
+- .NET 8 SDK
+- Ferramenta `dotnet-ef` 8.x (`dotnet tool install --global dotnet-ef --version 8.*`)
 
+## Restaurar e compilar
+
+```bash
+dotnet restore
+dotnet build
 ```
-ADOLab/
-├── ADOLab/              # Domínio e repository
-├── ADOLab.Console/      # Aplicação Console
-├── ADOLab.Web/          # Aplicação Web MVC
-└── ADOLab.sln           # Solution
+
+## Migrations
+
+Os comandos devem usar `DominoPontaDeQuina.Migrations` como startup project e `DominoPontaDeQuina.Repository` como projeto do contexto:
+
+```bash
+dotnet ef migrations add Inicial \
+  --project DominoPontaDeQuina.Repository \
+  --startup-project DominoPontaDeQuina.Migrations
+
+dotnet ef database update \
+  --project DominoPontaDeQuina.Repository \
+  --startup-project DominoPontaDeQuina.Migrations
 ```
 
-### Tecnologias
-- .NET 8
-- ASP.NET Core MVC (.NET 10)
-- ADO.NET
-- SQL Server
-
-
-### Execução
-Configure a connection string SqlServerConnection no appsettings.json do projeto que será executado.
-
-- Build: `dotnet build ADOLab.sln`
-- Console: `dotnet run --project ADOLab.Console/ADOLab.Console.csproj`
-- Web: `dotnet run --project ADOLab.Web/ADOLab.Web.csproj`
+O banco SQLite local `domino.db` e ignorado pelo Git.
